@@ -32,3 +32,5 @@ deploy:
   publish: true
   zip: deploy.zip
   role: "arn:aws:iam::$DEV_AWS_ACCOUNT_ID:role/lambda-data-preprocessor"
+  on:
+    all_branches: true
