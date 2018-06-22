@@ -28,7 +28,6 @@ deploy:
   role: arn:aws:iam::$DEV_AWS_ACCOUNT_ID:role/lambda-data-preprocessor
   on:
     all_branches: true
-notifications:
 notification:
   slack:
     rooms:
