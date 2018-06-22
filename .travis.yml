@@ -4,6 +4,7 @@ python:
   - 3.6
 
 install:
+  - echo Install
 
 before_deploy:
   - zip -r deploy.zip .
