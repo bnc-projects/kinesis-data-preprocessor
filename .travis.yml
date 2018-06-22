@@ -1,39 +1,29 @@
 language: python
-
+env:
+  global:
+  - secure: m4hKzjkR7MlEEZVLRISMQWGFlHs37vDVuQ4M32YkOXP1JsG2yPeQzE53YvRtbhciCJ1pWqMAtj50g2MF25YhrvijsjoqLptq3JhhOEpBBmUtH03w892kd8Tlj/0QtRUV1ldWo0TlU5LbJ8+TUDrXE5i3Ni0WeITFxoxG8f1+KW0sh7OLJUbrkG4ObZm4cxE3mZcvzfyOlzaXj2wt3SELwVD6XVqBimz8rG9wOn+p0NEsfVlj2hbnXIBDJFwLt2fE/xxEYRb1z6o392TGm7M2N0wTgU90RRw6CYAzmG8fk1UeIs77tKkF9gLsXtQEKSNmkjSk3jqED7zPy1SwwVvxvVbtC7Xn9qOmbq6ftho4lu8huVXr8aFQH4nCwVzjsMoHbvZEbvMh8B9OeMzUJ9e7xodv3AWymAZXSg7AAt4JQVSOwG8/Dw0OGkK9WU2RXY46nMYLTtygW7bwh9XnMPLp1CVo6piftPUbmlz70TZm0lYQ/umvBaRxq2wQeA/G9qpZ29aUJCjWz/LA3SZiHSXqxU4nXhX1uPaRCy6XkMWCn0m6HhK3P0BESOZJpwoOUXL81tm98crw21704IGy/FzZHf11r8Xqb2hj9bqxrjb+wL/tuBYMA0G/QB2I/u8PfPlwwnEmoAh/6woA32WWLRjwrnsK9gz+Uj6a0wqST4A9Lw0=
+  - secure: TugalJ/JeQOxxBqzavO38C0sG8v1QG0dKAwvfs2ib9x4LFnKuUqx4KcMy3Od2yn7ISpqKmKs9tWIH6WVdusEwFbdQz8jO2aIU3OgE9AJ1K9D5DpkyEPN84G1b/acKHkCVUsnAICalm8W/4K6N8nP65FObxhCCJTTV1mFL92jPOSeJLAgB5om8u84JWgJi/p0FtWrJJkwWTM9n4a9uIaFyF9p6OX5PmJ9gmneoFCuHIUHqFnLc1xuB2H97dnhduq8TbbcYGTFlx+4i2lAjqN/YjJ5QteUVdUdlyEoR3KNE/FoG84nWEYH7z4MKWT4cIkySmwC6Fi9SHdO0tiMWGN24AKIfjduzeHeSBLLNpJoKynfbd1H8h2gtCfrbonmQi+pJnkHQczMc6WE6PF9KvelkgKEnYVquM7/MkdqJjB2LBXXoymKFRrYt174RTjNQ55ld63qt/HYfGERPJh3n9U0F1GPQSNX25Gbw7PAzIGR/UcKsbgnTKcH0xlqdcLZJjXUvQ8P5nhtWtax5aFTV/PBuFE8PIpmO4UMfCz91bYhYG+iaUJ2PwRSRvSjPfBTeoWXpi063HDc5DX3mVYKj3XOl9gUMtNaN9u5ekvXJ8wF+eXo7iS6kdNm2OIfDrc2WXGwy7s+BJXnjNaC7eGkYcXNh6E/fMOVFSsYf6qnHCm+KXw=
+  - AWS_REGION=us-west-2
+  - secure: JJLsDc8wy6ByQcno+ZrdUcbwCe4cY9v8Kk0kVFvEV5qdDB+1Ua1WHXosBgBHqF7TgSAoS/Ep9fxyuCtLNnvs2T27AM9igKAW07tv9kCLQltrZJwmK72gNQCIGSBfbc5YN7QWomXorOamo+CnVVkwXrJAevec8gkzBR6cgpxXL7tsMxrYVHEmzYU2fzUsWcmT55hXYgTiMxZaYSLxC2Ki9CEZ9QXJHQf7kt37UUXIgN5MJRgLZGPeB7iSS6D+k8E895QS9VJqqWMzQ/V+g0JEm7Jsr7WzYTSLXoTXtIUTaEkM71frktQpoG04DuAJhzKslwIF58HHtZPtrfbYVszcP3ZkRPYleN0lNFbEjFfosgM/aZP99s/FwFoWidskJrhN5lfFZxEw2yVGPDRGHQSiyKWGdJoGmEQKT6B7QeYBTOQhQF+gnb3xvlkT5zkpgXAMgjdPrTktM36Eyj9QTgHxOa5yKN/fCJYC65S9AY1HcWeqaFPQwAEjTnxjKNSE1ovF6qz8rAPttsVxZQ79RVRRFq+hWsVQysf57iMBQh51PgOrBFVQeaUv8QIo8sbrCS3xTmwntd73EKVo6+vyFI2fHUCPVRbq3/i33hr14M+BDUJmNjo79su7DSi27HqvQcaL2hsyt735Byl25TV4ebm8QrXFHrnkhx3b3+BmCS+Ap3U=
 python:
-  - 3.6
-
+- 3.6
 install:
-  - echo Install
-
+- echo Install
 script:
-  - echo Ok
-
+- echo Ok
 before_deploy:
   - cd src
   - zip -r -D ../deploy.zip .
   - cd ..
 
 deploy:
-  - provider: lambda
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
-    function_name: kinesis-data-preprocessor
-    region: us-west-2
-    handler_name: lambda_function.lambda_handler
-    runtime: python3.6
-    publish: true
-    zip: deploy.zip
-    role: $ROLE
-  - provider: lambda
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
-    function_name: kinesis-data-preprocessor
-    region: us-west-2
-    handler_name: lambda_function.lambda_handler
-    runtime: python3.6
-    publish: true
-    zip: deploy.zip
-    role: $ROLE
-    on:
-      branch: master
+- provider: lambda
+  access_key_id: "$DEV_AWS_ACCESS_KEY_ID"
+  secret_access_key: "$DEV_AWS_SECRET_ACCESS_KEY"
+  function_name: kinesis-data-preprocessor
+  region: "$AWS_REGION"
+  handler_name: lambda_function.lambda_handler
+  runtime: python3.6
+  publish: true
+  zip: deploy.zip
+  role: "arn:aws:iam::$DEV_AWS_ACCOUNT_ID:role/lambda-data-preprocessor"
