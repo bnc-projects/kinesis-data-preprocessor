@@ -10,7 +10,9 @@ script:
   - echo Ok
 
 before_deploy:
-  - zip -r deploy.zip .
+  - cd src
+  - zip -r -D ../deploy.zip .
+  - cd ..
 
 deploy:
   - provider: lambda
