@@ -6,5 +6,8 @@ python:
 install:
   - echo Install
 
+script:
+  - echo Ok
+
 before_deploy:
   - zip -r deploy.zip .
