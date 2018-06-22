@@ -30,6 +30,7 @@ deploy:
   handler_name: lambda_function.lambda_handler
   runtime: python3.6
   publish: true
+  timeout: 60
   zip: deploy.zip
   role: "arn:aws:iam::$DEV_AWS_ACCOUNT_ID:role/lambda-data-preprocessor"
   on:

@@ -14,9 +14,6 @@ Resources:
             Principal:
               Service: lambda.amazonaws.com
             Action: 'sts:AssumeRole'
-            Condition:
-              StringEquals:
-                'sts:ExternalId': !Ref 'AWS::AccountId'
 
   KinesisDataProcessorPolicy:
     Type: 'AWS::IAM::Policy'
