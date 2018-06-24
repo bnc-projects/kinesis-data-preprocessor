@@ -45,6 +45,7 @@ deploy:
   timeout: 60
   on:
     all_branches: true
+    condition: $TRAVIS_BRANCH != master
 notification:
   slack:
     rooms:
