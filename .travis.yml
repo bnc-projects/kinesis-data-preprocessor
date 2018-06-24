@@ -30,8 +30,8 @@ deploy:
   zip: deploy.zip
   role: arn:aws:iam::$PROD_AWS_ACCOUNT_ID:role/lambda-data-preprocessor
   timeout: 60
-  branches:
-    only: master
+  on:
+    branch: master
 - provider: lambda
   access_key_id: "$DEV_AWS_ACCESS_KEY_ID"
   secret_access_key: "$DEV_AWS_SECRET_ACCESS_KEY"
@@ -49,5 +49,3 @@ notification:
   slack:
     rooms:
       secure: ae5vSNuTjOaMD+8o45Mn6p6bKNmLyoJikJK5EKCJk+ov+yL4/yL+vHhvumKFHAyvok6z59ZWBm9WSsoORYei9k0M8DJ20h0oQ5OS0nSZIYIV2b3Cy9PtS1RfGAaP/bHeD6/GEJ04L+XztNCi8gGcCs+Fhk/taCmRNNZaUGEovd0xNQh2qLkPoFocmsOlt6NLG+kNQAZIONwfDymq71zMC0Mp+VqepqNiVSSE1xkg31g22MQp22eFedaAriyS/mdAUlsU5Ce3yj8idG4qk2JyxTa1+kVPNbJu5gbnYN4bf+OaF73nWr3EVIewAVjkILRrHiNvOS/ISYQgDKCBt7eALnNbNy5ORFHWakP+RmtWerTZT9qDnbVxocsXskhE59UjzJJETlBO3sM2/r1yhKdndBoDIzWCehVlZJdWu0/EdguR8pZBjI88u5M3OHCyxwfP6TuRDHs1Ztv9CLjKzloDZszIUcMQEDrkJrSHvPmFhmCxX6b78XgKxFDGuPaJPOWSci8pX5/usx91YKN/gXAoEoDhdjcJoOm2H3PNezksRRdg0s49TnU0IOT4Dpy/aUkwRRqQComfpLTcACOMpboH3gH7qHK401t8tG38JsUMJjLXf8VGdLi4EJk2JtgT7Cp7orjvyEJQtrPc9S/T2y2FWJYc2hJZ0KmJ6jOHeYWGnzw=
-    on_success: change
-    on_failure: always
