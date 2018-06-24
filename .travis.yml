@@ -24,7 +24,8 @@ deploy:
   secret_access_key: "$PROD_AWS_SECRET_ACCESS_KEY"
   function_name: kinesis-data-preprocessor
   region: "$AWS_REGION"
-  handler_name: lambda_function.lambda_handler
+  handler_name: lambda_handler
+  module_name: lambda_function
   runtime: python2.7
   publish: true
   zip: deploy.zip
@@ -37,7 +38,8 @@ deploy:
   secret_access_key: "$DEV_AWS_SECRET_ACCESS_KEY"
   function_name: kinesis-data-preprocessor
   region: "$AWS_REGION"
-  handler_name: lambda_function.lambda_handler
+  handler_name: lambda_handler
+  module_name: lambda_function
   runtime: python2.7
   publish: true
   zip: deploy.zip
