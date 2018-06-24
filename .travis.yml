@@ -43,8 +43,8 @@ deploy:
   zip: deploy.zip
   role: arn:aws:iam::$PROD_AWS_ACCOUNT_ID:role/lambda-data-preprocessor
   timeout: 60
-  on:
-    branch: master
+  branches:
+    only: master
 notification:
   slack:
     rooms:
