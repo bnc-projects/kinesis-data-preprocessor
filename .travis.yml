@@ -25,7 +25,7 @@ deploy:
   function_name: kinesis-data-preprocessor
   region: "$AWS_REGION"
   handler_name: lambda_function.lambda_handler
-  runtime: python3.6
+  runtime: python2.7
   publish: true
   zip: deploy.zip
   role: arn:aws:iam::$PROD_AWS_ACCOUNT_ID:role/lambda-data-preprocessor
@@ -38,7 +38,7 @@ deploy:
   function_name: kinesis-data-preprocessor
   region: "$AWS_REGION"
   handler_name: lambda_function.lambda_handler
-  runtime: python3.6
+  runtime: python2.7
   publish: true
   zip: deploy.zip
   role: arn:aws:iam::$DEV_AWS_ACCOUNT_ID:role/lambda-data-preprocessor
